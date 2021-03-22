@@ -28,6 +28,11 @@ public class StockController {
         PageRequest pageRequest = PageRequest.of(page, size);
         return stockRepository.findAll(pageRequest);
     }
+
+    @PostMapping("/save")
+    public void save(@RequestBody Stock stock){
+        stockRepository.save(stock);
+    }
 //    @GetMapping("/findAll")
 //    public Page<Stock> findAll(int page, int size) {
 //        PageRequest pageRequest = PageRequest.of(page, size);
