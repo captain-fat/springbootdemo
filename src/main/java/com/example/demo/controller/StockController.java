@@ -22,6 +22,20 @@ public class StockController {
 //    public List<Stock> findAll(){
 //        return stockRepository.findAll();
 //    }
+    @PutMapping("/update")
+    public void update(@RequestBody Stock stock){
+        stockRepository.save(stock);
+    }
+
+    @DeleteMapping("/deleteById/{id}")
+    public void delete(@PathVariable("id") Integer id){
+        stockRepository.deleteById(id);
+    }
+
+    @GetMapping("/findById/{id}")
+    public Stock findById(@PathVariable("id") Integer id){
+        return stockRepository.findById(id).get();
+    }
 
     @GetMapping("/findAll/{page}/{size}")
     public Page<Stock> findAll(@PathVariable("page") Integer page, @PathVariable("size") Integer size) {
